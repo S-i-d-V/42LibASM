@@ -5,18 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/09 18:30:59 by user42            #+#    #+#             */
-/*   Updated: 2021/04/09 19:29:28 by user42           ###   ########.fr       */
+/*   Created: 2021/04/12 00:46:35 by user42            #+#    #+#             */
+/*   Updated: 2021/04/12 03:03:10 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libasm.h"
+#include "tester/tester.h"
 
-int		main(int ac, char **av)
+int		main()
 {
-	(void)ac;
-	(void)av;
-	printf("Mon ft_strlen  : %ld\n", ft_strlen("Cette string fait 27 chars."));
-	printf("Le vrai strlen : %ld\n", strlen("Cette string fait 27 chars."));
+	int success;
+
+	success = 0;
+	success = success + ft_strlen_tester();
+	success = success + ft_strcpy_tester();
+	success = success + ft_strcmp_tester();
+	if (success == 2)
+		green();
+	else
+		red();
+	printf("     *********************\n");
+	printf("     * NOTE FINALE : %d/6 *\n", success);
+	printf("     *********************\n");
+	reset_color();
 	return (0);
 }

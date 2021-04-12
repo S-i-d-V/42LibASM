@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libasm.h                                           :+:      :+:    :+:   */
+/*   tester_colors.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/09 18:36:26 by user42            #+#    #+#             */
-/*   Updated: 2021/04/12 02:32:51 by user42           ###   ########.fr       */
+/*   Created: 2021/04/12 00:45:14 by user42            #+#    #+#             */
+/*   Updated: 2021/04/12 00:57:51 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _LIBASM_H
-#define _LIBASM_H
+#include "tester.h"
 
-#include <errno.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
+void	red()
+{
+	printf("\033[1;31m");
+}
 
-size_t	ft_strlen(char *s);
-char	*ft_strcpy(char *dest, const char *src);
-int		ft_strcmp(const char *s1, const char *s2);
+void	green()
+{
+	printf("\033[1;32m");
+}
 
-#endif
+void	blue()
+{
+	printf("\033[1;34m");
+}
+
+void	reset_color()
+{
+	printf("\033[0m");
+}
