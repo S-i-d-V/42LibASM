@@ -1,56 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tester_strcmp.c                                    :+:      :+:    :+:   */
+/*   tester_strcpy.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/12 01:22:00 by user42            #+#    #+#             */
-/*   Updated: 2021/04/12 02:48:57 by user42           ###   ########.fr       */
+/*   Created: 2021/04/12 01:21:58 by user42            #+#    #+#             */
+/*   Updated: 2021/04/12 17:51:18 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tester.h"
 
-void	ft_strcmp_test(int n, int *success, char *s1, char *s2)
+void	ft_strcpy_test(int n, int *success, const char *dest, const char *src)
 {
-	//int ftret;
-	int ret;
-
 	display_test_name(n);
-	display_type_arg("char *", "s1");
-	printf(" = '%s';\n", s1);
-	display_type_arg("char *", "s2");
-	printf(" = '%s';\n", s2);
-	display_type_return("int");
-	//ftret = ft_strcmp(s1, s2);
-	ret = strcmp(s1, s2);
-	printf("ftret = %d | ret = %d\n", 0, ret);
+	display_type_arg("char *", "dest");
+	printf(" = '%s';\n", dest);
+	display_type_arg("char *", "src");
+	printf(" = '%s';\n", src);
+	display_type_return("char *");
+	printf("ftret = %s | ret = %s\n", ft_strcpy((char *)dest, src), strcpy((char *)dest, src));
 	printf("Resultat : ");
-	if (0 != ret)
+	if (strcmp(ft_strcpy((char *)dest, src), strcpy((char *)dest, src)))
 		test_failure();
 	else
 		*success = *success + test_success();
 	printf("\n\n");
 }
 
-int	ft_strcmp_tester()
+int	ft_strcpy_tester()
 {
 	int success;
+	char s1[] = "Dans cette string";
+	char s2[] = "Je met ca";
+	char s3[] = "Avec un backslash n\n";
+	char s4[] = "Pas assez";
+	char s5[] = "123456789";
+	char s6[] = "6789";
+	char s7[] = "";
+	
 
 	success = 0;
 	blue();
 	printf("            (-------)            \n");
-	printf("        -<( FT_STRCMP )>-        \n");
+	printf("        -<( FT_STRCPY )>-        \n");
 	printf("            (-------)            \n\n");
 	reset_color();
 
-	ft_strcmp_test(1, &success, "Ces strings sont les memes.", "Ces strings sont les memes.");
-	ft_strcmp_test(2, &success, "Ces strings sont les memes.", "Ces strings ne sont pas les memes.");
-	ft_strcmp_test(3, &success, "", "Je compare cette string a rien.");
-	ft_strcmp_test(4, &success, "Je compare cette string a rien.", "");
-	ft_strcmp_test(5, &success, "Backslash n\n", "Backslash n");
-	ft_strcmp_test(6, &success, "", "");
+	ft_strcpy_test(1, &success, s1, s2);
+	ft_strcpy_test(2, &success, s3, s2);
+	ft_strcpy_test(3, &success, s4, s2);
+	ft_strcpy_test(4, &success, s1, s7);
+	ft_strcpy_test(5, &success, s5, s6);
+	ft_strcpy_test(6, &success, s7, s7);
 
 	if (success == 6)
 		green();
@@ -58,7 +61,7 @@ int	ft_strcmp_tester()
 		red();
 	printf("           -<( %d/6 )>-\n\n", success);
 	reset_color();
-
+	
 	blue();
 	printf("       (-----------------)       \n\n");
 	reset_color();
