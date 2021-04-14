@@ -6,7 +6,7 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/09 13:11:34 by user42            #+#    #+#              #
-#    Updated: 2021/04/14 02:48:34 by user42           ###   ########.fr        #
+#    Updated: 2021/04/14 17:10:56 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ SRCS = ft_strlen.s \
 	ft_strcpy.s \
 	ft_strcmp.s	\
 	ft_write.s	\
-	ft_read.s
+	ft_read.s	\
+	ft_strdup.s
 
 OBJS = $(SRCS:.s=.o)
 
@@ -26,7 +27,8 @@ TESTER_SRCS = Tester/tester_colors.c \
 			Tester/tester_strcpy.c \
 			Tester/tester_strcmp.c \
 			Tester/tester_write.c \
-			Tester/tester_read.c
+			Tester/tester_read.c \
+			Tester/tester_strdup.c
 
 %.o: %.s
 	nasm -f elf64 $< -o $@

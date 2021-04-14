@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 18:30:59 by user42            #+#    #+#             */
-/*   Updated: 2021/04/14 02:32:20 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/14 17:19:06 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_write_test(int n, int *success, const void *buf, size_t count)
 {
 	ssize_t ftret;
 	ssize_t ret;
+	int err;
+	int fterr;
 
 	display_test_name(n);
 	display_type_arg("int", "fd");
@@ -28,12 +30,14 @@ void	ft_write_test(int n, int *success, const void *buf, size_t count)
 	printf("ft_write :\n");
 	ftret = ft_write(1, buf, count);
 	printf("errno = %d\n", errno);
+	err = errno;
 	printf("write :\n");
 	ret = write(1, buf, count);
 	printf("errno = %d\n", errno);
+	fterr = errno;
 	printf("ftret = %zd | ret = %zd\n", ftret, ret);
 	printf("Resultat : ");
-	if (ftret != ret)
+	if (ftret != ret || err != fterr)
 		test_failure();
 	else
 		*success = *success + test_success();

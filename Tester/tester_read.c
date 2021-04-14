@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 18:30:59 by user42            #+#    #+#             */
-/*   Updated: 2021/04/14 03:02:39 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/14 16:59:30 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,18 @@ void	ft_read_test(int n, int *success, size_t count)
 	printf(" = '%zd';\n", count);
 	display_type_return("ssize_t");
 
+	printf("ftret = %zd | ret = %zd\n", ftret, ret);
+
 	ret = read(fd, buf, count);
 	buf[ret] = '\0';
 	printf("read : %s\n", buf);
 	printf("errno = %d\n", errno);
 
-	ftret = ft_read(ftfd, ftbuf, count);
+	ftret = read(ftfd, ftbuf, count);
 	ftbuf[ftret] = '\0';
 	printf("ft_read : %s\n", ftbuf);
 	printf("errno = %d\n", errno);
 
-	printf("ftret = %zd | ret = %zd\n", ftret, ret);
 	printf("Resultat : ");
 	if (ftret != ret)
 		test_failure();
