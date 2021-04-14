@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 01:21:58 by user42            #+#    #+#             */
-/*   Updated: 2021/04/12 17:51:18 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/12 19:17:30 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_strcpy_test(int n, int *success, const char *dest, const char *src)
 	display_type_arg("char *", "src");
 	printf(" = '%s';\n", src);
 	display_type_return("char *");
-	printf("ftret = %s | ret = %s\n", ft_strcpy((char *)dest, src), strcpy((char *)dest, src));
+	printf("ftret = '%s' | ret = '%s'\n", ft_strcpy((char *)dest, src), strcpy((char *)dest, src));
 	printf("Resultat : ");
 	if (strcmp(ft_strcpy((char *)dest, src), strcpy((char *)dest, src)))
 		test_failure();
