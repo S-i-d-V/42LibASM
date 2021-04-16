@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 01:22:00 by user42            #+#    #+#             */
-/*   Updated: 2021/04/12 18:49:07 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/16 18:45:38 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,31 +36,30 @@ void	ft_strcmp_test(int n, int *success, char *s1, char *s2)
 
 int	ft_strcmp_tester()
 {
-	int success;
+	int success = 0;
 
-	success = 0;
 	blue();
 	printf("            (-------)            \n");
 	printf("        -<( FT_STRCMP )>-        \n");
 	printf("            (-------)            \n\n");
 	reset_color();
-
 	ft_strcmp_test(1, &success, "Ces strings sont les memes.", "Ces strings sont les memes.");
 	ft_strcmp_test(2, &success, "Ces strings sont les memes.", "Ces strings ne sont pas les memes.");
 	ft_strcmp_test(3, &success, "", "Je compare cette string a rien.");
 	ft_strcmp_test(4, &success, "Je compare cette string a rien.", "");
-	ft_strcmp_test(5, &success, "Backslash n\n", "Backslash n");
-	ft_strcmp_test(6, &success, "", "");
-
-	if (success == 6)
+	ft_strcmp_test(5, &success, "", "");
+	ft_strcmp_test(6, &success, "Backslash n\n", "Backslash n");
+	ft_strcmp_test(7, &success, "Backslash n", "Backslash \n");
+	ft_strcmp_test(8, &success, "\\", "");
+	ft_strcmp_test(9, &success, "", "\\");
+	if (success == 9)
 		green();
 	else
 		red();
-	printf("           -<( %d/6 )>-\n\n", success);
+	printf("           -<( %d/9 )>-\n\n", success);
 	reset_color();
-
 	blue();
 	printf("       (-----------------)       \n\n");
 	reset_color();
-	return ((success == 6) ? 1 : 0);
+	return ((success == 9) ? 1 : 0);
 }

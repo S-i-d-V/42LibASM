@@ -1,16 +1,10 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/04/09 13:11:34 by user42            #+#    #+#              #
-#    Updated: 2021/04/14 17:10:56 by user42           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+RED =`tput setaf 1`
+GREEN =`tput setaf 2`
+CLEAR =`tput sgr0`
 
 NAME = libasm.a
+
+NAME_TESTER = Libasm_tester
 
 SRCS = ft_strlen.s \
 	ft_strcpy.s \
@@ -34,17 +28,22 @@ TESTER_SRCS = Tester/tester_colors.c \
 	nasm -f elf64 $< -o $@
 
 all: $(NAME)
-	ar rc $(NAME) $(OBJS)
-	cc $(TESTER_SRCS) $(NAME) main.c
+
+test: $(NAME)
+	@cc -no-pie $(TESTER_SRCS) $(NAME) main.c -o $(NAME_TESTER)
+	@echo "$(GREEN)$(NAME_TESTER) compiled with success.$(CLEAR)"
 
 $(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+	@ar rcs $(NAME) $(OBJS)
+	@echo "$(GREEN)$(NAME) compiled with success.$(CLEAR)"
 
 clean:
-	rm -f $(OBJS)
+	@rm -f $(OBJS)
+	@echo "$(RED)Objects deleted with success.$(CLEAR)"
 
 fclean: clean
-	rm -f $(NAME)
-	rm -f ./a.out
+	@rm -f $(NAME)
+	@rm -f $(NAME_TESTER)
+	@echo "$(RED)$(NAME) & $(NAME_TESTER) deleted.$(CLEAR)"
 
 re: fclean all

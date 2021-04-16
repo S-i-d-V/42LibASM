@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 00:46:35 by user42            #+#    #+#             */
-/*   Updated: 2021/04/14 17:17:20 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/14 21:07:12 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int		main()
 	success = success + ft_write_tester();
 	success = success + ft_read_tester();
 	success = success + ft_strdup_tester();
+
 	if (success == 6)
 		green();
 	else

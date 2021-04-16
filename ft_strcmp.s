@@ -1,22 +1,20 @@
 global ft_strcmp
 
 ft_strcmp:
-	xor		rcx, rcx						;je met rcx a zero (si rcx = rcx = 0)
+	xor		ecx, ecx					;initialise ecx a 0
+	xor		eax, eax					;initialise eax a 0
 
 loop:
-	mov		al, byte[rsi + rcx]				;stock dans al le byte[rsi + rcx] car al fait 8bits(1 byte)
-	mov		bl, byte[rdi + rcx]				;stock dans bl le byte[rdi + rcx] car al fait 8bits(1 byte)
-	cmp		byte[rdi + rcx], 0				;compare ce byte avec 0 CONDITION DE SORTIE
-	jz		return							;si c'est la fin de la string(if byte = 0 : return) CONDITION DE SORTIE
-	cmp		byte[rsi + rcx], 0				;compare ce byte avec 0 CONDITION DE SORTIE
-	jz		return							;si c'est la fin de la string(ce byte = 0 : return) CONDITION DE SORTIE
-	cmp		bl, al							;compare ce byte de rdi avec ce byte de rsi CONDITION DE SORTIE
-	jnz		return							;si les deux ne sont pas egaux(if byte[rdi + rcx] != al)
-	inc		rcx								;incremente ma boucle
-	jmp		loop							;boucle
+	mov		al, byte[rdi]				;stock dans al(qui sont les 8derniers bits de eax) le char dest a comparer.
+	cmp		al, 0						;compare al a 0 pour savoir si on est en fin de string
+	je		return						;si egal a 0 rentre dans return
+	cmp		al, byte[rsi]				;compare al(byte[rdi]) a byte[rsi]
+	jne		return						;si non egal rentre dans return
+	inc		rdi							;incremente mes caracteres
+	inc		rsi							;incremente mes caracteres
+	jmp		loop						;boucle
 
 return:
-	movzx		rax, byte[rdi + rcx]		;moove le char ( 1 byte ) de rdi dans le repertoire de retour rax (movzx = calloc)
-	movzx		rbx, byte[rsi + rcx]		;moove le char ( 1 byte ) de rsi dans le repertoire rbx (car de la meme taille que rax pour comparer) (movzx = calloc)
-	sub			rax, rbx					;fais la comparaison entre les deux bytes et stock dans le repertoire de retour rax
-	ret										;return rax
+	mov			cl, byte [rsi]			;stock dans al(qui sont les 8derniers bits de ecx) le char src a comparer.
+	sub			eax, ecx				;soustrait eax(al) et cl(ecx) et stock le resultat dans eax(ax)
+	ret									;return l'operation en haut de la pile (eax)

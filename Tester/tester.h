@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 23:38:37 by user42            #+#    #+#             */
-/*   Updated: 2021/04/14 17:10:31 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/16 19:22:21 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,11 @@ int		ft_write_tester();
 void	ft_write_test(int n, int *success, const void *buf, size_t count);
 
 int		ft_read_tester();
-void	ft_read_test(int n, int *success, size_t count);
+void	ft_read_test(char *file, int n, int *success, size_t buf_size);
 
 int		ft_strdup_tester();
 void	ft_strdup_test(int n, int *success, char *str);
+
+void	test_read();
 
 #endif

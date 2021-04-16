@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 01:21:58 by user42            #+#    #+#             */
-/*   Updated: 2021/04/12 19:17:30 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/16 18:45:17 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,39 +31,37 @@ void	ft_strcpy_test(int n, int *success, const char *dest, const char *src)
 
 int	ft_strcpy_tester()
 {
-	int success;
-	char s1[] = "Dans cette string";
-	char s2[] = "Je met ca";
-	char s3[] = "Avec un backslash n\n";
-	char s4[] = "Pas assez";
-	char s5[] = "123456789";
-	char s6[] = "6789";
-	char s7[] = "";
+	int success = 0;
+	char s1[] = "Petite string";
+	char s2[] = "String de moyenne taille";
+	char s3[] = "String d'une longueur plus grande";
+	char s4[] = "";
+	char s5[] = "\n";
+	char s6[] = "String test";
+	char s7[] = "String test\n";
 	
-
-	success = 0;
 	blue();
 	printf("            (-------)            \n");
 	printf("        -<( FT_STRCPY )>-        \n");
 	printf("            (-------)            \n\n");
 	reset_color();
-
 	ft_strcpy_test(1, &success, s1, s2);
-	ft_strcpy_test(2, &success, s3, s2);
-	ft_strcpy_test(3, &success, s4, s2);
-	ft_strcpy_test(4, &success, s1, s7);
-	ft_strcpy_test(5, &success, s5, s6);
-	ft_strcpy_test(6, &success, s7, s7);
-
-	if (success == 6)
+	ft_strcpy_test(2, &success, s2, s1);
+	ft_strcpy_test(3, &success, s2, s3);
+	ft_strcpy_test(4, &success, s3, s2);
+	ft_strcpy_test(5, &success, s3, s4);
+	ft_strcpy_test(6, &success, s4, s5);
+	ft_strcpy_test(7, &success, s5, s4);
+	ft_strcpy_test(8, &success, s6, s7);
+	ft_strcpy_test(9, &success, s7, s6);
+	if (success == 9)
 		green();
 	else
 		red();
-	printf("           -<( %d/6 )>-\n\n", success);
+	printf("           -<( %d/9 )>-\n\n", success);
 	reset_color();
-	
 	blue();
 	printf("       (-----------------)       \n\n");
 	reset_color();
-	return ((success == 6) ? 1 : 0);
+	return ((success == 9) ? 1 : 0);
 }

@@ -14,4 +14,4 @@ loop:
 return:
 	mov		byte [rdi + rcx], 0				;ajout du /0
 	mov		rax, rdi						;moove le repertoire dest rdi dans le repertoire de retour rax
-	ret										;return rax
+	ret										;return l'operation en haut de la pile (rax)

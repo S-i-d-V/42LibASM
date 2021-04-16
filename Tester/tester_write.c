@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 18:30:59 by user42            #+#    #+#             */
-/*   Updated: 2021/04/14 17:19:06 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/16 19:36:56 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,22 +46,19 @@ void	ft_write_test(int n, int *success, const void *buf, size_t count)
 
 int	ft_write_tester()
 {
-	int success;
-
-	success = 0;
+	int success = 0;
+	
 	blue();
 	printf("            (------)            \n");
 	printf("        -<( FT_WRITE )>-        \n");
 	printf("            (------)            \n\n");
 	reset_color();
-
-	ft_write_test(1, &success, "Test write", 10);
+	ft_write_test(1, &success, "Je print cette string", 21);
 	ft_write_test(2, &success, "Avec un backslash n\n", 20);
 	ft_write_test(3, &success, "\n\\n123456789\\n", 14);
 	ft_write_test(4, &success, "", 0);
-	ft_write_test(5, &success, "123456789", 6);
-	ft_write_test(6, &success, "123456789\n", 10);
-
+	ft_write_test(5, &success, "\n", 1);
+	ft_write_test(6, &success, "\\", 1);
 	if (success == 6)
 		green();
 	else

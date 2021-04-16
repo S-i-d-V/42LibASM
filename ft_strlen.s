@@ -11,4 +11,4 @@ count:
 
 return:
 	mov		rax, rcx						;moove la valeur de rcx dans le repertoire de retour rax
-	ret										;return rax
+	ret										;return l'operation en haut de la pile (rax)

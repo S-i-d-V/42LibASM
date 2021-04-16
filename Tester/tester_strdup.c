@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 01:21:58 by user42            #+#    #+#             */
-/*   Updated: 2021/04/14 17:17:08 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/16 19:35:03 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,53 +21,47 @@ void	ft_strdup_test(int n, int *success, char *str)
 	display_type_arg("char *", "str");
 	printf(" = '%s';\n", str);
 	display_type_return("char *");
-	ftret = strdup(str);
 	ret = strdup(str);
-	printf("ftret = '%s' | ret = '%s'\n", ftret, ret);
-	free(ftret);
-	free(ret);
+	printf("strdup : '%s'\n", ret);
+	ftret = ft_strdup(str);
+	printf("ft_strdup : '%s'\n", ftret);
 	printf("Resultat : ");
 	if (strcmp(ftret, ret))
 		test_failure();
 	else
 		*success = *success + test_success();
 	printf("\n\n");
+	free(ftret);
+	free(ret);
 }
 
 int	ft_strdup_tester()
 {
-	int success;
-	char s1[] = "Dans cette string";
-	char s2[] = "Je met ca";
-	char s3[] = "Avec un backslash n\n";
+	int success = 0;
+	char s1[] = "Je duplique cette string";
+	char s2[] = "Avec un backslash n\n";
+	char s3[] = "\n";
 	char s4[] = "";
-	char s5[] = "123456789";
-	char s6[] = "6789";
+	char s5[] = "\\";
 	
-
-	success = 0;
 	blue();
 	printf("            (-------)            \n");
 	printf("        -<( FT_STRDUP )>-        \n");
 	printf("            (-------)            \n\n");
 	reset_color();
-
 	ft_strdup_test(1, &success, s1);
 	ft_strdup_test(2, &success, s2);
 	ft_strdup_test(3, &success, s3);
 	ft_strdup_test(4, &success, s4);
 	ft_strdup_test(5, &success, s5);
-	ft_strdup_test(6, &success, s6);
-
-	if (success == 6)
+	if (success == 5)
 		green();
 	else
 		red();
-	printf("           -<( %d/6 )>-\n\n", success);
+	printf("           -<( %d/5 )>-\n\n", success);
 	reset_color();
-	
 	blue();
 	printf("       (-----------------)       \n\n");
 	reset_color();
-	return ((success == 6) ? 1 : 0);
+	return ((success == 5) ? 1 : 0);
 }
