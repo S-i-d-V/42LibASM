@@ -6,13 +6,13 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 18:30:59 by user42            #+#    #+#             */
-/*   Updated: 2021/04/16 19:36:56 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/19 19:42:35 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tester.h"
 
-void	ft_write_test(int n, int *success, const void *buf, size_t count)
+void	ft_write_test_full(int n, int *success, const void *buf, size_t count)
 {
 	ssize_t ftret;
 	ssize_t ret;
@@ -44,7 +44,31 @@ void	ft_write_test(int n, int *success, const void *buf, size_t count)
 	printf("\n\n");
 }
 
-int	ft_write_tester()
+void	ft_write_test(int n, int *success, const void *buf, size_t count)
+{
+	ssize_t ftret;
+	ssize_t ret;
+	int err;
+	int fterr;
+
+	blue();
+	printf("Test [%02d] :", n);
+	reset_color();
+	printf("\n");
+	ftret = ft_write(1, buf, count);
+	err = errno;
+	printf("\n");
+	ret = write(1, buf, count);
+	fterr = errno;
+	printf("\n");
+	if (ftret != ret || err != fterr)
+		test_failure();
+	else
+		*success = *success + test_success();
+	printf("\n");
+}
+
+int	ft_write_tester(int output)
 {
 	int success = 0;
 	
@@ -53,12 +77,24 @@ int	ft_write_tester()
 	printf("        -<( FT_WRITE )>-        \n");
 	printf("            (------)            \n\n");
 	reset_color();
-	ft_write_test(1, &success, "Je print cette string", 21);
-	ft_write_test(2, &success, "Avec un backslash n\n", 20);
-	ft_write_test(3, &success, "\n\\n123456789\\n", 14);
-	ft_write_test(4, &success, "", 0);
-	ft_write_test(5, &success, "\n", 1);
-	ft_write_test(6, &success, "\\", 1);
+	if (output == 1)
+	{
+		ft_write_test_full(1, &success, "Je print cette string", 21);
+		ft_write_test_full(2, &success, "Avec un backslash n\n", 20);
+		ft_write_test_full(3, &success, "\n\\n123456789\\n", 14);
+		ft_write_test_full(4, &success, "", 0);
+		ft_write_test_full(5, &success, "\n", 1);
+		ft_write_test_full(6, &success, "\\", 1);
+	}
+	else
+	{
+		ft_write_test(1, &success, "Je print cette string", 21);
+		ft_write_test(2, &success, "Avec un backslash n\n", 20);
+		ft_write_test(3, &success, "\n\\n123456789\\n", 14);
+		ft_write_test(4, &success, "", 0);
+		ft_write_test(5, &success, "\n", 1);
+		ft_write_test(6, &success, "\\", 1);
+	}
 	if (success == 6)
 		green();
 	else

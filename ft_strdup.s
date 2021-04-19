@@ -1,5 +1,4 @@
 global ft_strdup
-extern __errno_location
 extern ft_strlen
 extern malloc
 extern ft_strcpy
