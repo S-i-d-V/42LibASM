@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 00:46:35 by user42            #+#    #+#             */
-/*   Updated: 2021/04/19 21:05:53 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/19 21:19:27 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		main(int ac, char **av)
 	if (ac != 1 && ac != 2 || (ac == 2 && output == 0))
 	{
 		red();
-		printf("[ERROR] arguments invalides. (./Libasm_tester [optional]-st)\n");
+		printf("[ERROR] arguments invalides. (./Libasm_tester [optional]-test)\n");
 		reset_color();
 		return(0);
 	}
