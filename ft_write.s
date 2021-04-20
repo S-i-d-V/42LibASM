@@ -2,12 +2,17 @@ global ft_write
 extern __errno_location
 
 ft_write:
+		cmp			rdx, 0				;compare le buffer size a 0
+		jl			return				;si inferieur a 0 on return
 		mov			rax, 1				;donne a rax la valeur de l'appel systeme write (1)
 		syscall							;syscall
 		cmp			rax, 0				;compare si rax a 0
 		jl			error				;si rax est inferieur a zero on rentre dans error
 		ret								;sinon on return rax
 
+return:
+		mov			rax, -1
+		ret
 error:
 		neg			rax					;la valeur de retour est en negatif donc on la repasse en positif
 		mov			rdi, rax			;stock la valeur de retour dans rdi
