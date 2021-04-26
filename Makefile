@@ -30,7 +30,7 @@ TESTER_SRCS = Tester/tester_colors.c \
 all: $(NAME)
 
 test: $(NAME)
-	@cc -no-pie $(TESTER_SRCS) $(NAME) main.c -o $(NAME_TESTER)
+	@cc $(TESTER_SRCS) $(NAME) main.c -o $(NAME_TESTER)
 	@echo "$(GREEN)$(NAME_TESTER) compiled with success.$(CLEAR)"
 	@echo "Commande : ./Libasm_tester (-test) pour montrer les tests."
 
